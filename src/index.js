@@ -23,8 +23,10 @@ projAddBtn.addEventListener('click', () => {
 projAddBtn.innerHTML = 'New Project';
 projAddBtn.classList.add('project-btn', 'btn', 'btn-success');
 const innerContent = document.createElement("div")
+const outerContent = document.createElement("div")
 
 innerContent.appendChild(projAddBtn);
+outerContent.appendChild(innerContent);
 innerContent.appendChild(form);
 for (let i = 0; i < projectArray.length; i++) {
   const li = document.createElement('li');
@@ -37,7 +39,7 @@ for (let i = 0; i < projectArray.length; i++) {
   ul.appendChild(li);
 }
 content.appendChild(ul);
-content.appendChild(innerContent);
+content.appendChild(outerContent);
 // console.log(form);
 
 const dates = [
@@ -51,6 +53,19 @@ dates.sort(compareAsc);
 //   Mon Jul 10 1989 00:00:00,
 //   Sun Jul 02 1995 00:00:00
 // ]
+
+// function displayContent() {
+
+// outerContent.removeChild(outerContent.childNodes[0]);
+//   outerContent.appendChild(innerContent);
+// console.log('helo')
+// }
+
+//  a.addEventListener('click', () => {
+//     outerContent.removeChild(outerContent.childNodes[0]);
+//   outerContent.appendChild(innerContent);
+//   console.log('helo')
+//   });
 
 
 let submitProject = document.getElementById("submit-project")

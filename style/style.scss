@@ -30,6 +30,7 @@ li {
 .form {
   position: fixed;
   top: 30%;
+  z-index: 9;
 
   &::before {
     content: "";
