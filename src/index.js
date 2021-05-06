@@ -1,1 +1,1 @@
-console.log('Hello World!');
+const task = require('./task').default
