@@ -1,7 +1,14 @@
 import { compareAsc, format } from 'date-fns';
 import '../style/style.scss';
-
+const Task = require('./task').default;
+const Project = require('./project').default;
 const form = require('./projectForm').default;
+const ul = document.createElement('ul');
+const projectArray = [];
+
+projectArray.push(new Project("My ToDo's"));
+
+
 
 const date = format(new Date(2014, 1, 11), 'yyyy-MM-dd');
 //= > '2014-02-11'
@@ -10,10 +17,25 @@ const projAddBtn = document.createElement('button');
 projAddBtn.addEventListener('click', () => {
   document.getElementById('projOpen').classList.toggle('open');
 });
+
 projAddBtn.innerHTML = 'New Project';
 projAddBtn.classList.add('project-btn', 'btn', 'btn-success');
-content.appendChild(projAddBtn);
-content.appendChild(form);
+const innerContent = document.createElement("div")
+
+innerContent.appendChild(projAddBtn);
+innerContent.appendChild(form);
+for (let i = 0; i < projectArray.length; i++) {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = '#';
+  a.id = i
+  a.innerHTML = projectArray[i].name;
+  a.addEventListener('click', displayToDo);
+  li.appendChild(a);
+  ul.appendChild(li);
+}
+content.appendChild(ul);
+content.appendChild(innerContent);
 // console.log(form);
 
 const dates = [
@@ -28,41 +50,36 @@ dates.sort(compareAsc);
 //   Sun Jul 02 1995 00:00:00
 // ]
 
-const Task = require('./task').default;
-const Project = require('./project').default;
 
-const projectArray = [];
-function addProjectToArray(name) {
+let submitProject = document.getElementById("submit-project")
+submitProject.addEventListener('click', () => {
+  let name = document.getElementById("name-project").value
   projectArray.push(new Project(name));
-}
-
-const task1 = new Task('Go Fishing', 'Going finshing', date);
-addProjectToArray('New Task');
-addProjectToArray('second Task');
-addProjectToArray('third Task');
-addProjectToArray('fourth Task');
-addProjectToArray('five Task');
-const proj1 = projectArray[0];
-proj1.array.push(task1);
-console.log(proj1);
-const ul = document.createElement('ul');
-
-function displayToDo() {
-  const { array } = projectArray[this.id];
-  for (let i = 0; i < array.length; i++) {
-    const p = document.createElement('p');
-    p.innerHTML = array[i].name;
-    content.appendChild(p);
-  }
-}
-for (let i = 0; i < projectArray.length; i++) {
   const li = document.createElement('li');
   const a = document.createElement('a');
-  a.id = i;
+  a.id = projectArray.length-1
   a.href = '#';
-  a.innerHTML = projectArray[i].name;
+  a.innerHTML = projectArray[projectArray.length-1].name;
   a.addEventListener('click', displayToDo);
   li.appendChild(a);
   ul.appendChild(li);
+  document.getElementById("name-project").value = ""
+})
+
+const task1 = new Task('Go Fishing', 'Going finshing', date);
+projectArray[0].array.push(task1)
+
+function displayToDo() {
+  if (projectArray.length == 0) {
+    return
+  }
+  const { array } = projectArray[this.id];
+  for (let i = 0; i < array.length; i++) {
+
+    const p = document.createElement('p');
+    p.innerHTML = array[i].name;
+    innerContent.appendChild(p);
+  }
 }
-content.appendChild(ul);
+
+
