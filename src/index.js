@@ -68,15 +68,15 @@ submitProject.addEventListener('click', () => {
   document.getElementById("name-project").value = ""
 })
 
-const task1 = new Task('Go Fishing', 'Going finshing', date);
-projectArray[0].array.push(task1)
+
 
 function displayToDo() {
   if (projectArray.length == 0) {
     return
   }
   const { array } = projectArray[this.id];
-  innerContent.appendChild(cardForm(this.id, projectArray,Task,innerContent))
+  console.log(projectArray[this.id].array.length);
+  innerContent.appendChild(cardForm(projectArray[this.id], projectArray,Task,innerContent))
   for (let i = 0; i < array.length; i++) {
     let card = displayTask(array[i], i, projectArray)
     innerContent.append(card);

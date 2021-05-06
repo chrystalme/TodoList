@@ -1,8 +1,8 @@
 import { compareAsc, format } from 'date-fns';
 const displayTask =  require('./cards').default;
 
-function taskForm(i, projectArray, Task,innerContent) {
-    
+function taskForm(project, projectArray, Task,innerContent) {
+    let i = project.array.length
     const card = document.createElement('div');
     const cardBody = document.createElement('div');
     const task = document.createElement('input');
@@ -12,12 +12,14 @@ function taskForm(i, projectArray, Task,innerContent) {
     const addTask = document.createElement('button');
     addTask.id = `form-${i}`
     addTask.addEventListener('click', () => {
+        console.log(project.array)
+        let i = project.array.length
           let task = document.getElementById("task").value;
           let description = document.getElementById("description").value;
           let date = document.getElementById("date").value;
-          projectArray[i].array.push(new Task(task, description, format(new Date(date), 'yyyy-MM-dd')))
-        console.log(projectArray[i].array)
-        let newcard = displayTask(projectArray[i].array[projectArray[i].array.length - 1], i, projectArray)
+          project.array.push(new Task(task, description, format(new Date(date), 'yyyy-MM-dd')))
+        console.log(project.array)
+        let newcard = displayTask(project.array[project.array.length - 1], i, projectArray)
         innerContent.appendChild(newcard);
         })
     card.style.width = '18rem';

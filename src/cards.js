@@ -25,6 +25,7 @@ function displayTask(task,i, projectArray) {
     buttonPriority.innerHTML = "Priority"
     buttonDestroy.innerHTML = "Delete"
     buttonDestroy.addEventListener("click", () => {
+        console.log(i)
         document.getElementById(`card-${i}`).remove()
         projectArray.splice(i,1)
     })
