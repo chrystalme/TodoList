@@ -1,3 +1,4 @@
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -18,3 +19,18 @@ li {
     }
   }
 }
+
+  .project-btn{
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+  }
+  .form{
+    position: fixed;
+    top: 30%;
+  }
+
+  .open{
+    display: none;
+  }
+
