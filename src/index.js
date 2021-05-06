@@ -3,6 +3,7 @@ import '../style/style.scss';
 const Task = require('./task').default;
 const Project = require('./project').default;
 const form = require('./projectForm').default;
+const card = require('./taskForm').default;
 const ul = document.createElement('ul');
 const projectArray = [];
 
@@ -57,12 +58,12 @@ submitProject.addEventListener('click', () => {
   projectArray.push(new Project(name));
   const li = document.createElement('li');
   const a = document.createElement('a');
-  a.id = projectArray.length-1
+  a.id = projectArray.length-1;
   a.href = '#';
   a.innerHTML = projectArray[projectArray.length-1].name;
   a.addEventListener('click', displayToDo);
   li.appendChild(a);
-  ul.appendChild(li);
+  ul.appendChild(li);  
   document.getElementById("name-project").value = ""
 })
 
@@ -78,8 +79,8 @@ function displayToDo() {
 
     const p = document.createElement('p');
     p.innerHTML = array[i].name;
+    card.id = `card-${i}`;
+    innerContent.append(card);
     innerContent.appendChild(p);
   }
 }
-
-

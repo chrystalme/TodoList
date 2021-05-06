@@ -3,11 +3,11 @@ ul {
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: #f1f1f1;
 }
 
 li {
   a {
+    background-color: #f1f1f1;
     display: block;
     color: #000;
     padding: 8px 16px;
@@ -16,6 +16,9 @@ li {
       background-color: #555;
       color: white;
     }
+  }
+  p{
+    display: inline;
   }
 }
 
@@ -51,5 +54,6 @@ li {
   right: 10px;
 }
 #content {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
