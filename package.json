@@ -28,7 +28,6 @@
     "babel-eslint": "10.1.x",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
-    "date-fns": "^2.21.2",
     "eslint": "6.8.x",
     "eslint-config-airbnb-base": "14.1.x",
     "eslint-plugin-import": "2.20.x",
@@ -74,6 +73,7 @@
     "binaryextensions": "^2.3.0",
     "brace-expansion": "^1.1.11",
     "braces": "^2.3.2",
+
     "browserslist": "^4.16.6",
     "buffer-from": "^1.1.1",
     "cache-base": "^1.0.1",
@@ -121,6 +121,7 @@
     "cssesc": "^3.0.0",
     "dargs": "^6.1.0",
     "dateformat": "^3.0.3",
+    "date-fns": "^2.21.2",
     "debug": "^3.2.7",
     "decamelize": "^1.2.0",
     "decamelize-keys": "^1.1.0",
