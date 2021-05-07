@@ -25,6 +25,7 @@ projAddBtn.innerHTML = 'New Project';
 projAddBtn.classList.add('project-btn', 'btn', 'btn-success');
 const innerContent = document.createElement("div")
 const outerContent = document.createElement("div")
+innerContent.classList.add("inner-content");
 
 content.appendChild(projAddBtn);
 outerContent.appendChild(innerContent);
@@ -84,6 +85,7 @@ window.addEventListener("click", () => {
   console.log(projectArray)
 })
 
+
 function displayToDo() {
  // this.classlist.add("active")
   
@@ -95,7 +97,10 @@ function displayToDo() {
   }
   //console.log(projectArray,projectArray[this.id].array)
   const array = projectArray[this.id];
-
+let heading = document.createElement('h1');
+heading.innerHTML = array.name;
+heading.classList.add('text-center', 'header');
+innerContent.appendChild(heading);
   //console.log(projectArray[this.id].array.length);
   innerContent.appendChild(cardForm(projectArray[this.id], projectArray,Task,innerContent))
   for (let i = 0; i < array.array.length; i++) {
@@ -104,6 +109,7 @@ function displayToDo() {
     innerContent.append(card);
    
   }
+
 }
 
 

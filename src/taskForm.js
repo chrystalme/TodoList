@@ -22,8 +22,8 @@ function taskForm(project, projectArray, Task,innerContent) {
         let newcard = displayTask(project.array[project.array.length - 1], i, projectArray)
         innerContent.appendChild(newcard);
         })
-    card.style.width = '18rem';
-    card.classList.add('card');
+    // card.style.width = '18rem';
+    card.classList.add('card', 'header');
     cardBody.classList.add('card-body');
     task.classList.add('form-control', 'card-title');
     task.placeholder = 'New Task';
@@ -37,7 +37,7 @@ function taskForm(project, projectArray, Task,innerContent) {
     date.placeholder = 'Task details';
     date.type = 'date';
     date.id = 'date';
-    addTask.classList.add('btn', 'btn-primary');
+    addTask.classList.add('btn', 'btn-primary', 'w-100');
     addTask.innerHTML = 'Add Task';
     card.appendChild(cardBody);
     cardBody.appendChild(task);

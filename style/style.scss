@@ -61,3 +61,21 @@ li {
 .active {
   background-color: red;
 }
+
+.inner-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+.header {
+  grid-column: 1/4;
+}
+
+.card-delete {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 999;
+  cursor: pointer;
+  color: tomato;
+}

@@ -12,7 +12,8 @@ function displayTask(array, i, project) {
     h6.setAttribute("contenteditable", true)
     const updateBtn = document.createElement('button');
   const buttonPriority = document.createElement('button');
-    const buttonDestroy = document.createElement('button');
+  const icon = document.createElement('span');
+    const buttonDestroy = document.createElement('i');
     const statusBtn = document.createElement('button');
     updateBtn.classList.add("btn", "btn-primary")
     updateBtn.innerHTML = "Update"
@@ -21,8 +22,7 @@ function displayTask(array, i, project) {
   h6.innerHTML = array.date;
     p.innerHTML = array.description;
   card.id = `card-${i}`;
-  card.classList.add('card');
-  card.style.width = '18rem';
+  card.classList.add('card', 'm-3');
   cardBody.classList.add('card-body');
   h5.classList.add('card-title');
   h6.classList.add('card-subtitle', 'mb-2', 'text-muted');
@@ -43,9 +43,8 @@ function displayTask(array, i, project) {
   statusButton(array, statusBtn)
   backGround(array, card)
   buttonPriority.classList.add('btn', 'btn-warning');
-  buttonDestroy.classList.add('btn', 'btn-danger');
+  buttonDestroy.classList.add('fas', 'fa-trash', 'card-delete');
   buttonPriority.innerHTML = 'Priority';
-    buttonDestroy.innerHTML = 'Delete';
   buttonDestroy.addEventListener('click', () => {
     document.getElementById(`card-${i}`).remove();
     delete project.array[i]
