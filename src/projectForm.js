@@ -15,7 +15,7 @@ button.addEventListener('click', () => {
 });
 form.appendChild(closingButton);
 
-form.classList.add('form', 'col-6', 'offset-1', 'text-center', 'open');
+form.classList.add('form', 'col-6', 'offset-3', 'text-center', 'open');
 form.id = 'projOpen';
 h2.innerHTML = 'Add new project';
 input.type = 'text';
