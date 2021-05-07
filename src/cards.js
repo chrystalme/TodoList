@@ -1,9 +1,15 @@
-function displayTask(array, i, projectArray, taskArray) {
+function displayTask(array, i, taskArray) {
+    console.log("/////////////")
+    console.log(taskArray)
+    console.log("/////////////")
   const card = document.createElement('div');
   const cardBody = document.createElement('div');
   const h5 = document.createElement('h5');
   const h6 = document.createElement('h6');
     const p = document.createElement('p');
+    p.setAttribute("contenteditable", true)
+    h5.setAttribute("contenteditable", true)
+    h6.setAttribute("contenteditable", true)
     const updateBtn = document.createElement('button');
   const buttonPriority = document.createElement('button');
     const buttonDestroy = document.createElement('button');
@@ -14,14 +20,19 @@ function displayTask(array, i, projectArray, taskArray) {
     statusBtn.innerHTML = "Incomplete"
   h5.innerHTML = array.name;
   h6.innerHTML = array.date;
-  p.innerHTML = array.description;
+    p.innerHTML = array.description;
   card.id = `card-${i}`;
   card.classList.add('card');
   card.style.width = '18rem';
   cardBody.classList.add('card-body');
   h5.classList.add('card-title');
   h6.classList.add('card-subtitle', 'mb-2', 'text-muted');
-  p.classList.add('card-text');
+    p.classList.add('card-text');
+    updateBtn.addEventListener("click", () => {
+       console.log(p.innerHTML)
+        update(array, h5, h6, p)
+        console.log(array)
+    })
     statusBtn.addEventListener('click', () => {
         status(array, statusBtn)
         console.log(array)
@@ -35,11 +46,11 @@ function displayTask(array, i, projectArray, taskArray) {
   buttonPriority.classList.add('btn', 'btn-warning');
   buttonDestroy.classList.add('btn', 'btn-danger');
   buttonPriority.innerHTML = 'Priority';
-  buttonDestroy.innerHTML = 'Delete';
+    buttonDestroy.innerHTML = 'Delete';
   buttonDestroy.addEventListener('click', () => {
-    console.log(i);
-    document.getElementById(`card-${i}`).remove();
-    taskArray.splice(i, 1);
+     console.log(taskArray)
+     document.getElementById(`card-${i}`).remove();
+     delete taskArray[i]
   });
   cardBody.appendChild(h5);
   cardBody.appendChild(h6);
@@ -79,8 +90,11 @@ function status(array,btn) {
     }
 }
 
-function update() {
-    
+function update(array,h5,h6,p) {
+    array.name = h5.innerHTML;
+    array.date = h6.innerHTML;
+    array.description = p.innerHTML;
 }
+
 
 export default displayTask;

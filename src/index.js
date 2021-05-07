@@ -1,5 +1,6 @@
 import { compareAsc, format } from 'date-fns';
 import '../style/style.scss';
+const display = require("./test").default;
 const displayTask = require('./cards').default;
 const Task = require('./task').default;
 const Project = require('./project').default;
@@ -95,13 +96,16 @@ function displayToDo() {
   if (projectArray.length == 0) {
     return
   }
-  
-  const { array } = projectArray[this.id];
-  console.log(projectArray[this.id].array.length);
+  //console.log(projectArray,projectArray[this.id].array)
+  const array = projectArray[this.id];
+  console.log(array)
+  //console.log(projectArray[this.id].array.length);
   innerContent.appendChild(cardForm(projectArray[this.id], projectArray,Task,innerContent))
-  for (let i = 0; i < array.length; i++) {
-    let card = displayTask(array[i], i, projectArray,projectArray[this.id].array)
+  for (let i = 0; i < array.array.length; i++) {
+    console.log(array)
+    let card = displayTask(array.array[i], i, array)
     innerContent.append(card);
+    display(array)
   }
 }
 
