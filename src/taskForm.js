@@ -1,6 +1,10 @@
 import { format } from 'date-fns';
 
 const displayTask = require('./cards').default;
+const localArray = require('./localStorage').default;
+// const projectArray = localArray.projectArray;
+
+const { localStorageSetter } = localArray;
 
 function taskForm(project, projectArray, Task, innerContent) {
   const i = project.array.length;
@@ -18,12 +22,12 @@ function taskForm(project, projectArray, Task, innerContent) {
     const description = document.getElementById('description');
     const date = document.getElementById('date');
     project.array.push(new Task(task.value, description.value, format(new Date(date.value), 'yyyy-MM-dd')));
-
     const newcard = displayTask(project.array[project.array.length - 1], i, projectArray);
     innerContent.appendChild(newcard);
     task.value = '';
     description.value = '';
     date.value = '';
+    localStorageSetter(projectArray);
   });
   // card.style.width = '18rem';
   card.classList.add('card', 'header');

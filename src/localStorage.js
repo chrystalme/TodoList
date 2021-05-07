@@ -1,13 +1,11 @@
-const projectArray = require("./index")
+const projectArray = [];
 function localStorageSetter() {
-    localStorage.clear()
-    alert("heeeeeeeee")
-    for (let i = 0; i < projectArray.length; i += 1) {
-      const project = projectArray[i];
-      if (project !== undefined) {
-        localStorage.setItem(`project${i + 1}`, JSON.stringify(project));
-      }
+  localStorage.clear();
+  for (let i = 0; i < projectArray.length; i += 1) {
+    const project = projectArray[i];
+    if (project !== undefined) {
+      localStorage.setItem(`project${i + 1}`, JSON.stringify(project));
     }
   }
-  export default localStorageSetter;
-  
+}
+export default { localStorageSetter, projectArray };

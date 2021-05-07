@@ -8,14 +8,12 @@ const Project = require('./project').default;
 const form = require('./projectForm').default;
 const cardForm = require('./taskForm').default;
 
-const ul = document.createElement('ul');
-const projectArray = [];
+const localArray = require('./localStorage').default;
 
-projectArray.push(new Project("My ToDo's"));
-
-
+const { projectArray } = localArray;
 
 const content = document.getElementById('content');
+const ul = document.createElement('ul');
 const projAddBtn = document.createElement('button');
 projAddBtn.addEventListener('click', () => {
   document.getElementById('projOpen').classList.toggle('open');
@@ -30,8 +28,6 @@ innerContent.classList.add('inner-content');
 content.appendChild(projAddBtn);
 outerContent.appendChild(innerContent);
 outerContent.appendChild(form);
-
-
 content.appendChild(outerContent);
 
 
@@ -67,6 +63,8 @@ function displayProject() {
     a.addEventListener('click', displayToDo);
     li.appendChild(a);
     ul.appendChild(li);
+    content.appendChild(ul);
+    content.appendChild(innerContent);
   }
 }
 
@@ -84,6 +82,7 @@ submitProject.addEventListener('click', () => {
   ul.appendChild(li);
   document.getElementById('name-project').value = '';
 });
+
 function localStorageGetter() {
   for (let i = 0; i <= localStorage.length; i += 1) {
     const project = localStorage.getItem(`project${i}`);
@@ -99,5 +98,8 @@ function localStorageGetter() {
   }
 }
 
-module.exports = projectArray;
-localStorageGetter()
+localStorageGetter();
+
+if (projectArray.length === 0) {
+  projectArray.push(new Project("My ToDo's"));
+}

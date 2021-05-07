@@ -1,20 +1,15 @@
 import { isPast } from 'date-fns';
 
+const localArray = require('./localStorage').default;
+
+const { localStorageSetter } = localArray;
+
 function backGround(array, card) {
   if (array.priority === true) {
     card.classList.add('bg-warning');
   }
 }
-function localStorageSetter(projectArray) {
-  localStorage.clear()
-  alert("heeeeeeeee")
-  for (let i = 0; i < projectArray.length; i += 1) {
-    const project = projectArray[i];
-    if (project !== undefined) {
-      localStorage.setItem(`project${i + 1}`, JSON.stringify(project));
-    }
-  }
-}
+
 function priority(array) {
   if (array.priority === true) {
     array.priority = false;
@@ -46,9 +41,6 @@ function status(array, btn) {
     btn.innerHTML = 'Completed';
   }
 }
-function test() {
-  alert("hello")
-}
 
 function update(array, h5, h6, p) {
   array.name = h5.innerHTML;
@@ -56,9 +48,9 @@ function update(array, h5, h6, p) {
   array.description = p.innerHTML;
 }
 
-function checkDate(array, card) {
+function checkDate(array, title) {
   if (isPast(new Date(array.date))) {
-    card.style.backgroundColor = 'gray';
+    title.style.textDecoration = 'line-through';
   }
 }
 
@@ -92,19 +84,16 @@ function displayTask(array, i, project, projectArray) {
   p.classList.add('card-text');
   updateBtn.addEventListener('click', () => {
     update(array, h5, h6, p);
-    localStorageSetter(projectArray)
-    
+    localStorageSetter(projectArray);
   });
   statusBtn.addEventListener('click', () => {
     status(array, statusBtn);
-    localStorageSetter(projectArray)
-    
+    localStorageSetter(projectArray);
   });
   buttonPriority.addEventListener('click', () => {
     card.classList.toggle('bg-warning');
     priority(array);
-    localStorageSetter(projectArray)
-    
+    localStorageSetter(projectArray);
   });
   statusButton(array, statusBtn);
   backGround(array, card);
@@ -114,10 +103,9 @@ function displayTask(array, i, project, projectArray) {
   buttonDestroy.addEventListener('click', () => {
     document.getElementById(`card-${i}`).remove();
     delete project.array[i];
-    localStorageSetter(projectArray)
-    
+    localStorageSetter(projectArray);
   });
-  checkDate(array, card);
+  checkDate(array, h5);
   cardBody.appendChild(h5);
   cardBody.appendChild(h6);
   cardBody.appendChild(p);
@@ -126,6 +114,7 @@ function displayTask(array, i, project, projectArray) {
   cardBody.appendChild(statusBtn);
   cardBody.appendChild(updateBtn);
   card.appendChild(cardBody);
+
   return card;
 }
 
