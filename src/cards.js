@@ -19,6 +19,8 @@ function displayTask(task,i, projectArray) {
     p.classList.add("card-text")
     buttonPriority.addEventListener("click", () => {
         card.classList.toggle("bg-warning")
+        task.priority = true
+        console.log(task)
     })
     buttonPriority.classList.add("btn","btn-warning")
     buttonDestroy.classList.add("btn", "btn-danger")
