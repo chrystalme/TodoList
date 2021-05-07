@@ -63,11 +63,6 @@ dates.sort(compareAsc);
 // }
 
 
-function remContent() {
-  console.log('helo')
-  alert("whohooo")
-  
-}
 
 let submitProject = document.getElementById("submit-project")
 submitProject.addEventListener('click', () => {
@@ -85,7 +80,9 @@ submitProject.addEventListener('click', () => {
   document.getElementById("name-project").value = ""
 })
 
-
+window.addEventListener("click", () => {
+  console.log(projectArray)
+})
 
 function displayToDo() {
  // this.classlist.add("active")
@@ -98,14 +95,14 @@ function displayToDo() {
   }
   //console.log(projectArray,projectArray[this.id].array)
   const array = projectArray[this.id];
-  console.log(array)
+
   //console.log(projectArray[this.id].array.length);
   innerContent.appendChild(cardForm(projectArray[this.id], projectArray,Task,innerContent))
   for (let i = 0; i < array.array.length; i++) {
-    console.log(array)
+   
     let card = displayTask(array.array[i], i, array)
     innerContent.append(card);
-    display(array)
+   
   }
 }
 

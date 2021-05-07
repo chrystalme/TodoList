@@ -1,7 +1,7 @@
-function displayTask(array, i, taskArray) {
-    console.log("/////////////")
-    console.log(taskArray)
-    console.log("/////////////")
+function displayTask(array, i, project) {
+  if (array == undefined) {
+  return ""
+}
   const card = document.createElement('div');
   const cardBody = document.createElement('div');
   const h5 = document.createElement('h5');
@@ -16,8 +16,7 @@ function displayTask(array, i, taskArray) {
     const statusBtn = document.createElement('button');
     updateBtn.classList.add("btn", "btn-primary")
     updateBtn.innerHTML = "Update"
-    statusBtn.classList.add("btn", "btn-outline-info","mt-1")
-    statusBtn.innerHTML = "Incomplete"
+    statusBtn.classList.add("btn")
   h5.innerHTML = array.name;
   h6.innerHTML = array.date;
     p.innerHTML = array.description;
@@ -41,16 +40,16 @@ function displayTask(array, i, taskArray) {
     card.classList.toggle('bg-warning');
     priority(array)
   });
-    
+  statusButton(array, statusBtn)
   backGround(array, card)
   buttonPriority.classList.add('btn', 'btn-warning');
   buttonDestroy.classList.add('btn', 'btn-danger');
   buttonPriority.innerHTML = 'Priority';
     buttonDestroy.innerHTML = 'Delete';
   buttonDestroy.addEventListener('click', () => {
-     console.log(taskArray)
-     document.getElementById(`card-${i}`).remove();
-     delete taskArray[i]
+    document.getElementById(`card-${i}`).remove();
+    delete project.array[i]
+    console.log(project.array)
   });
   cardBody.appendChild(h5);
   cardBody.appendChild(h6);
@@ -75,6 +74,18 @@ function priority(array) {
     }else{
         array.priority = true;
     }
+}
+function statusButton(array,btn) {
+  if (array.status === false) {
+      btn.classList.add("btn-outline-info")
+      btn.classList.remove("btn-success")
+      btn.innerHTML = "Incomplete"
+  } else {
+      
+      btn.classList.remove("btn-outline-info")
+      btn.classList.add("btn-success")
+      btn.innerHTML = "Completed"
+  }
 }
 function status(array,btn) {
     if (array.status === true) {
