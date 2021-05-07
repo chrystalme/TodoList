@@ -118,5 +118,4 @@ function displayTask(array, i, project, projectArray) {
   return card;
 }
 
-
 export default displayTask;

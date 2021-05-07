@@ -1,6 +1,4 @@
-
 import '../style/style.scss';
-
 
 const displayTask = require('./cards').default;
 const Task = require('./task').default;
@@ -29,7 +27,6 @@ content.appendChild(projAddBtn);
 outerContent.appendChild(innerContent);
 outerContent.appendChild(form);
 content.appendChild(outerContent);
-
 
 function displayToDo() {
   while (innerContent.firstChild) {
