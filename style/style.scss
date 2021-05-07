@@ -17,7 +17,7 @@ li {
       color: white;
     }
   }
-  p{
+  p {
     display: inline;
   }
 }
@@ -57,4 +57,7 @@ li {
 #content {
   display: grid;
   grid-template-columns: auto 1fr;
+}
+.active {
+  background-color: red;
 }

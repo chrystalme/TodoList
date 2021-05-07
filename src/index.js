@@ -25,9 +25,9 @@ projAddBtn.classList.add('project-btn', 'btn', 'btn-success');
 const innerContent = document.createElement("div")
 const outerContent = document.createElement("div")
 
-innerContent.appendChild(projAddBtn);
+content.appendChild(projAddBtn);
 outerContent.appendChild(innerContent);
-innerContent.appendChild(form);
+outerContent.appendChild(form);
 for (let i = 0; i < projectArray.length; i++) {
   const li = document.createElement('li');
   const a = document.createElement('a');
@@ -61,18 +61,19 @@ dates.sort(compareAsc);
 // console.log('helo')
 // }
 
-//  a.addEventListener('click', () => {
-//     outerContent.removeChild(outerContent.childNodes[0]);
-//   outerContent.appendChild(innerContent);
-//   console.log('helo')
-//   });
 
+function remContent() {
+  console.log('helo')
+  alert("whohooo")
+  
+}
 
 let submitProject = document.getElementById("submit-project")
 submitProject.addEventListener('click', () => {
   let name = document.getElementById("name-project").value
   projectArray.push(new Project(name));
   const li = document.createElement('li');
+  // li
   const a = document.createElement('a');
   a.id = projectArray.length-1;
   a.href = '#';
@@ -86,14 +87,20 @@ submitProject.addEventListener('click', () => {
 
 
 function displayToDo() {
+ // this.classlist.add("active")
+  
+  while (innerContent.firstChild) {
+    innerContent.removeChild(innerContent.lastChild);
+  }
   if (projectArray.length == 0) {
     return
   }
+  
   const { array } = projectArray[this.id];
   console.log(projectArray[this.id].array.length);
   innerContent.appendChild(cardForm(projectArray[this.id], projectArray,Task,innerContent))
   for (let i = 0; i < array.length; i++) {
-    let card = displayTask(array[i], i, projectArray)
+    let card = displayTask(array[i], i, projectArray,projectArray[this.id].array)
     innerContent.append(card);
   }
 }
