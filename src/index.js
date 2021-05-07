@@ -14,6 +14,7 @@ const projectArray = [];
 projectArray.push(new Project("My ToDo's"));
 
 
+
 const content = document.getElementById('content');
 const projAddBtn = document.createElement('button');
 projAddBtn.addEventListener('click', () => {
@@ -30,7 +31,7 @@ content.appendChild(projAddBtn);
 outerContent.appendChild(innerContent);
 outerContent.appendChild(form);
 
-content.appendChild(ul);
+
 content.appendChild(outerContent);
 
 
@@ -50,20 +51,23 @@ function displayToDo() {
 
   innerContent.appendChild(cardForm(projectArray[this.id], projectArray, Task, innerContent));
   for (let i = 0; i < array.array.length; i += 1) {
-    const card = displayTask(array.array[i], i, array);
+    const card = displayTask(array.array[i], i, array, projectArray);
     innerContent.append(card);
   }
 }
 
-for (let i = 0; i < projectArray.length; i += 1) {
-  const li = document.createElement('li');
-  const a = document.createElement('a');
-  a.href = '#';
-  a.id = i;
-  a.innerHTML = projectArray[i].name;
-  a.addEventListener('click', displayToDo);
-  li.appendChild(a);
-  ul.appendChild(li);
+function displayProject() {
+  content.appendChild(ul);
+  for (let i = 0; i < projectArray.length; i += 1) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#';
+    a.id = i;
+    a.innerHTML = projectArray[i].name;
+    a.addEventListener('click', displayToDo);
+    li.appendChild(a);
+    ul.appendChild(li);
+  }
 }
 
 const submitProject = document.getElementById('submit-project');
@@ -80,3 +84,20 @@ submitProject.addEventListener('click', () => {
   ul.appendChild(li);
   document.getElementById('name-project').value = '';
 });
+function localStorageGetter() {
+  for (let i = 0; i <= localStorage.length; i += 1) {
+    const project = localStorage.getItem(`project${i}`);
+    const newproject = JSON.parse(project);
+    if (newproject != null) {
+      projectArray.push(newproject);
+    } else {
+      localStorage.removeItem(`project${i}`);
+    }
+  }
+  if (projectArray.length > 0) {
+    displayProject();
+  }
+}
+
+module.exports = projectArray;
+localStorageGetter()

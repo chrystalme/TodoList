@@ -5,6 +5,16 @@ function backGround(array, card) {
     card.classList.add('bg-warning');
   }
 }
+function localStorageSetter(projectArray) {
+  localStorage.clear()
+  alert("heeeeeeeee")
+  for (let i = 0; i < projectArray.length; i += 1) {
+    const project = projectArray[i];
+    if (project !== undefined) {
+      localStorage.setItem(`project${i + 1}`, JSON.stringify(project));
+    }
+  }
+}
 function priority(array) {
   if (array.priority === true) {
     array.priority = false;
@@ -36,6 +46,9 @@ function status(array, btn) {
     btn.innerHTML = 'Completed';
   }
 }
+function test() {
+  alert("hello")
+}
 
 function update(array, h5, h6, p) {
   array.name = h5.innerHTML;
@@ -49,7 +62,7 @@ function checkDate(array, card) {
   }
 }
 
-function displayTask(array, i, project) {
+function displayTask(array, i, project, projectArray) {
   if (array === undefined) {
     return '';
   }
@@ -79,13 +92,19 @@ function displayTask(array, i, project) {
   p.classList.add('card-text');
   updateBtn.addEventListener('click', () => {
     update(array, h5, h6, p);
+    localStorageSetter(projectArray)
+    
   });
   statusBtn.addEventListener('click', () => {
     status(array, statusBtn);
+    localStorageSetter(projectArray)
+    
   });
   buttonPriority.addEventListener('click', () => {
     card.classList.toggle('bg-warning');
     priority(array);
+    localStorageSetter(projectArray)
+    
   });
   statusButton(array, statusBtn);
   backGround(array, card);
@@ -95,6 +114,8 @@ function displayTask(array, i, project) {
   buttonDestroy.addEventListener('click', () => {
     document.getElementById(`card-${i}`).remove();
     delete project.array[i];
+    localStorageSetter(projectArray)
+    
   });
   checkDate(array, card);
   cardBody.appendChild(h5);
