@@ -1,6 +1,6 @@
 # TodoList
 
-In this project, we built a basic web based ToDoList appliction using JavaScript and Webpack. One can add, remove, update ToDo's. We use local storage to store the data from the user.
+In this project, we built a basic web based ToDoList appliction using JavaScript and Webpack. One can add, remove, update Todo's. We use local storage to store the data from the user.
 
 ## Built With
 
