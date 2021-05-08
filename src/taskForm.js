@@ -3,7 +3,6 @@ import { format } from 'date-fns';
 import displayTask from './cards';
 import localArray from './localStorage';
 
-
 const { localStorageSetter } = localArray;
 
 function taskForm(project, projectArray, Task, innerContent) {
@@ -53,6 +52,5 @@ function taskForm(project, projectArray, Task, innerContent) {
   cardBody.appendChild(addTask);
   return card;
 }
-
 
 export default taskForm;
