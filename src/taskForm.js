@@ -1,7 +1,8 @@
 import { format } from 'date-fns';
 
-const displayTask = require('./cards').default;
-const localArray = require('./localStorage').default;
+import displayTask from './cards';
+import localArray from './localStorage';
+
 
 const { localStorageSetter } = localArray;
 
@@ -28,6 +29,7 @@ function taskForm(project, projectArray, Task, innerContent) {
     date.value = '';
     localStorageSetter(projectArray);
   });
+
   card.classList.add('card', 'header');
   cardBody.classList.add('card-body');
   task.classList.add('form-control', 'card-title');
@@ -51,5 +53,6 @@ function taskForm(project, projectArray, Task, innerContent) {
   cardBody.appendChild(addTask);
   return card;
 }
+
 
 export default taskForm;

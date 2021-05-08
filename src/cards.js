@@ -1,23 +1,24 @@
 import { isPast } from 'date-fns';
 
-const localArray = require('./localStorage').default;
+import localArray from './localStorage';
 
 const { localStorageSetter } = localArray;
 
-function backGround(array, card) {
+const backGround = (array, card) => {
   if (array.priority === true) {
     card.classList.add('bg-warning');
   }
-}
+};
 
-function priority(array) {
+const priority = (array) => {
   if (array.priority === true) {
     array.priority = false;
   } else {
     array.priority = true;
   }
-}
-function statusButton(array, btn) {
+};
+
+const statusButton = (array, btn) => {
   if (array.status === false) {
     btn.classList.add('btn-outline-info', 'mx-2');
     btn.classList.remove('btn-success');
@@ -27,8 +28,9 @@ function statusButton(array, btn) {
     btn.classList.add('btn-success');
     btn.innerHTML = 'Completed';
   }
-}
-function status(array, btn) {
+};
+
+const status = (array, btn) => {
   if (array.status === true) {
     array.status = false;
     btn.classList.add('btn-outline-info');
@@ -40,19 +42,19 @@ function status(array, btn) {
     btn.classList.add('btn-success');
     btn.innerHTML = 'Completed';
   }
-}
+};
 
-function update(array, h5, h6, p) {
+const update = (array, h5, h6, p) => {
   array.name = h5.innerHTML;
   array.date = h6.innerHTML;
   array.description = p.innerHTML;
-}
+};
 
-function checkDate(array, title) {
+const checkDate = (array, title) => {
   if (isPast(new Date(array.date))) {
     title.style.textDecoration = 'line-through';
   }
-}
+};
 
 function displayTask(array, i, project, projectArray) {
   if (array === undefined) {

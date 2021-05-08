@@ -1,12 +1,12 @@
 import '../style/style.scss';
+import displayTask from './cards';
 
-const displayTask = require('./cards').default;
-const Task = require('./task').default;
-const Project = require('./project').default;
-const form = require('./projectForm').default;
-const cardForm = require('./taskForm').default;
+import Task from './task';
+import Project from './project';
+import form from './projectForm';
+import cardForm from './taskForm';
 
-const localArray = require('./localStorage').default;
+import localArray from './localStorage';
 
 const { projectArray } = localArray;
 
@@ -37,6 +37,10 @@ function displayToDo() {
   }
 
   const array = projectArray[this.id];
+  if (array.name === null) {
+    return;
+  }
+
   const heading = document.createElement('h1');
   heading.innerHTML = array.name;
   heading.classList.add('text-center', 'header');
