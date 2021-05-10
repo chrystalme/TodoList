@@ -8,6 +8,7 @@ In this project, we built a basic web based ToDoList appliction using JavaScript
 - Webpack
 - Html
 - Bootstrap
+- Jest
 
 ### System requirements
 
@@ -17,6 +18,14 @@ In this project, we built a basic web based ToDoList appliction using JavaScript
 
 ```
 $ npm install --save-dev webpack
+```
+## To Install Jest
+> Follow the documentation [here](https://jestjs.io/docs/getting-started)
+
+or 
+
+```
+$ npm install --save-dev jest
 ```
 
 ## Getting Started
@@ -33,6 +42,12 @@ $ git clone https://github.com/chrystalme/TodoList.git
 
 ```
 $ cd TodoList
+```
+
+## To run Jest test
+
+```
+$ npm run test
 ```
 
 ## Instructions
