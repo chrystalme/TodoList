@@ -1,4 +1,3 @@
-
 const Task = require('../src/task');
 
 test('create task', () => {

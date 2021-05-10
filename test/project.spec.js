@@ -1,4 +1,3 @@
-
 const Project = require('../src/project');
 
 test('create project with name (test)', () => {
