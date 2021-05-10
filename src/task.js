@@ -7,4 +7,5 @@ class Task {
     this.status = status;
   }
 }
-export default Task;
+//export default Task;
+module.exports = Task;

@@ -7,7 +7,7 @@ import form from './projectForm';
 import cardForm from './taskForm';
 
 import localArray from './localStorage';
-
+module.exports = { Project }
 const { projectArray } = localArray;
 
 const content = document.getElementById('content');
