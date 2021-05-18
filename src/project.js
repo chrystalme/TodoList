@@ -4,4 +4,6 @@ class Project {
     this.array = [];
   }
 }
-export default Project;
+// export default Project;
+
+module.exports = Project;
